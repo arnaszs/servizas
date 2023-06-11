@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load humanize %}
+{% block title %}
+  Welcome to {{ block.super }}
+{% endblock title %}
+
+{% block content %}
+<body>
+  <h1>Welcome to Ren's Auto Garage!</h1>
+  <div class="container">
+
+    <ul>
+      <h2>We have {{ cars }} registered cars</h2>
+      <h3>And {{ services }} available services</h3>
+      {% for service_name in all_services %}
+      <li>{{ service_name }}</li>
+      {% endfor %}
+    </ul><br>
+
+    <h2>Service Progress</h2>
+    <ul>
+      <li>New services: {{ new_services }}</li>
+      <li>Processing services: {{ processing_services }}</li>
+      <li>Completed services: {{ completed_services }}</li>
+      <li>Canceled services: {{ canceled_services }}</li>
+      <li>You'r visiting us already for the: {{ num_visits|ordinal }} time</li>
+    </ul>
+  </div>
+</body>
+{% endblock content %}

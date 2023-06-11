@@ -1,0 +1,11 @@
+div class="cars_top_paginator">
+    {% if cars.has_previous %}
+        <a href="?{% if request.GET.q %}q={{ request.GET.q }}&{% endif %}page=1">&#9198;</a>
+        <a href="?{% if request.GET.q %}q={{ request.GET.q }}&{% endif %}page={{ cars.previous_page_number }}">&#9194;</a>
+    {% endif %}
+    <span class="current">{{ cars.number }} / {{ cars.paginator.num_pages }}</span>
+    {% if cars.has_next %}
+        <a href="?{% if request.GET.q %}q={{ request.GET.q }}&{% endif %}page={{ cars.next_page_number }}">&#9193;</a>
+        <a href="?{% if request.GET.q %}q={{ request.GET.q }}&{% endif %}page={{ cars.paginator.num_pages }}">&#9197;</a>
+    {% endif %}
+</div>

@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Welcome to {{ block.super }}{% endblock title %}
+
+{% block content %}
+  <div class="container">
+    <h1>Service Order #{{ order.id }}</h1>
+    <strong>Car owner: </strong>{{ order.car.client }}<br>
+    <strong>Model: </strong>{{ order.car.model.make }} {{ order.car.model.model }} {{ order.car.model.year }}<br>
+    <strong>Engine: </strong>{{ order.car.model.engine }}<br>
+    <strong>Date: </strong>{{ order.date }}<br>
+    <strong>Note: </strong>{{ order.car.note|safe }}<br><br>
+    
+    <center><strong>Order Entries</strong></center>
+
+      {% for entry in order.order_entries.all %}
+      {{ entry.service.name }}:<br> 
+        Quantity - {{ entry.quantity }}, 
+        Price - {{ entry.price }}$,<br>
+        Status - 
+          {% with entry_color=entry.get_color %}
+            <span style="color: {{ entry_color }}">{{ entry.get_status_display }}<br><br></span>
+          {% endwith %}
+        
+      {% empty %}
+        <li>No order entries found.</li>
+      {% endfor %}
+
+    <strong>Total Price: ${{ order.price }}</strong>
+    <h5 class="carlist_content">
+      <a href="{% url 'car_detail' order.car.pk %}"><br>
+      {% if order.car.model.cover %}
+        <img class="model-cover" src="{{ order.car.model.cover.url }}">
+      {% else %}
+        <img class="model-cover" src="{% static 'service/img/default_cover.jpg' %}">
+      {% endif %}</a>
+    </h5>
+
+    <h2>Reviews</h2>
+    {% if user.is_authenticated %}
+    {% if user.is_superuser or user.is_staff or user == order.car.client %}
+        <form method="post" action="{{ request.path }}">
+        <h3>Leave your review</h3>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Post</button>
+        </form>
+    {% else %}
+        <p class="box box-info">the car owner or employee can participate in the order discussion</p>
+    {% endif %}
+    {% endif %}
+    {% if order.reviews.count > 0 %}
+        <ul>
+            {% for review in order.reviews.all %}
+              <li>{{ review.reviewed_at }} by <a href="{% url 'profile' review.reviewer.id %}">
+                {% if review.reviewer.profile.picture %}
+                <img src="{{ review.reviewer.profile.picture.url }}" class="user-avatar">
+                {% endif %}
+                  {{ review.reviewer }}</a><br>
+                    {{ review.content }}
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</div>
+{% endblock content %}

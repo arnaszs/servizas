@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Welcome to {{ block.super }}{% endblock title %}
+
+{% block content %}
+<div class="container">
+    <li><a href="{% url 'my-order-new'%}?next=/service">Make an order</a></li>
+<h1>My orders</h1>
+{% if order_list %}
+<ul>
+    {% for order in order_list %}
+        <li class="container">
+            <a href="{% url 'order_detail' order.pk %}">{{ order.car.model }}</a>
+
+            {% if order.due_back %}, 
+            Should be fixed by: {{ order.due_back }}
+            {% endif %}
+            {% if order.status == status and order.is_overdue %}
+            <span class="orderoverdue">OVERDUE!</span>{% endif %}
+        </li>
+    {% endfor %}
+</ul>
+{% else %}
+<p class="box box-warning">
+    You have no orders yet, go and make some!
+</p>
+</div>
+{% endif %}
+{% endblock content %}

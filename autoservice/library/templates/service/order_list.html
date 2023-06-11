@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Welcome to {{ block.super }}
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+  <h1>Orders</h1>
+  {% include 'includes/search.html' %}
+  {% include 'includes/paginator_nav.html' %}
+  <ul>
+    {% if orders %}
+      {% for order in orders %}
+        <li class="container">
+          Order #{{ order.id }} <a href="{% url 'order_detail' order.pk %}"><br><br>
+          <ul>
+            <li>Name: {{ order.car.client }}</li>
+            <li>Licence plate: {{ order.car }}</li>
+            <li>Order date: {{ order.date }}</li>
+            {% if order.due_back %} 
+            Should be fixed by: {{ order.due_back }}
+            {% endif %}
+            {% if order.status == status and order.is_overdue %}
+            <span class="orderoverdue">OVERDUE!</span>{% endif %}
+          </ul>
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <li>No orders found.</li>
+  {% endif %}
+  {% include 'includes/paginator_pages.html' %}
+</div>
+{% endblock %}

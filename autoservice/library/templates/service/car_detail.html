@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+  Welcome to {{ block.super }}
+{% endblock title %}
+
+{% block content %}
+<h1>Car Detail</h1>
+  <div class="container">
+    <ul class="carlist_content">
+      <li><strong>Owner:</strong> {{ car.client }}</li>
+      <li><strong>Model:</strong> {{ car.model }}</li>
+      <li><strong>License Plate:</strong> {{ car.licence_plate }}</li>
+      <li><strong>VIN Code:</strong> {{ car.vin_code }}</li>
+        {% if car.model.cover %}
+          <img src="{{ car.model.cover.url }}">
+        {% else %}
+          <img src="{% static 'service/img/default_cover.jpg' %}">
+        {% endif %}
+    </ul>
+  </div>
+{% endblock %}

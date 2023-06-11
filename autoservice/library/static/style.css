@@ -1,0 +1,222 @@
+html {
+    font-family: Arial, sans-serif;
+  }
+  
+  #logo {
+    font-family: Arial, sans-serif;
+    font-size: 26px;
+    color: #000000;
+    text-transform: uppercase;
+    padding: 10px;
+    background-color: #ffffff;
+    border: 1px solid #000000;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  }
+  
+  body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding: 0;
+    margin: 0;
+  }
+  
+  header {
+    background-color: #89a19e;
+    padding: 0.2rem;
+    color: #fff;
+  }
+  
+  .nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  header ul.nav {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    padding-inline-start: 0;
+  
+  }
+  
+  header ul.nav li {
+    margin: 0 1rem;
+    font-size: 1.2rem;
+  }
+  
+  header ul.nav a {
+    text-decoration: none;
+    color: #fff;
+  }
+  
+  header ul.nav a:hover {
+    text-decoration: underline;
+  }
+  
+  main {
+    flex-grow: 1;
+    padding: 2rem;
+  }
+  
+  p,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    padding: 0;
+    margin: 0;
+    text-align: center;
+  }
+  
+  a {
+    color: #1b4c2e;
+    text-decoration: none;
+  }
+  
+  footer {
+    background-color: #89a19e;
+    padding: 1rem;
+    color: #fff;
+    text-align: center;
+  }
+  
+  footer p {
+    margin: 0;
+    font-size: 0.9rem;
+  }
+  
+  .container {
+    max-width: 80vh;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .container h1 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .container h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  
+  .container h3 {
+    font-size: 1rem;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  
+  .container ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .container li {
+    margin-bottom: 10px;
+  }
+  
+  /* class cars_bottom_paginator in car_list.html */
+  .cars_bottom_paginator {
+    background-color: rgb(221, 221, 221);
+    text-align: center;
+  }
+  
+  .cars_top_paginator {
+    text-align: center;
+  }
+  
+  /* class order_bottom_paginator in paginator_pages.html */
+  .order_bottom_paginator {
+    background-color: rgb(221, 221, 221);
+    text-align: center;
+  }
+  
+  .order_top_paginator {
+    text-align: center;
+  }
+  
+  .carlist_content {
+    text-align: left;
+    padding-top: 10px;
+  }
+  
+  .carlist_content a {
+    color: rgb(88, 88, 88);
+  }
+  
+  .carlist_content img {
+    width: 100%;
+  }
+  
+  .order_list a {
+    color: rgb(88, 88, 88);
+  }
+  
+  form {
+    padding: 0.5rem;
+  }
+  
+  .car_list_content {
+    list-style: none;
+  }
+  
+  .orderoverdue {
+    background-color: #aa0000;
+    color: #ffffff;
+    font-weight: bolder;
+    padding: 0 0.5rem;
+  }
+  
+  form p label {
+    display: inline-block;
+    min-width: 12vw;
+  }
+  
+  label[for='id_content'] {
+      display: none;
+  }
+  
+  .profile {
+    text-align: center;
+    margin: 20px;
+  }
+  
+  .profile h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .profile .user-profile-picture {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+  }
+  
+  .profile p {
+    font-size: 16px;
+    margin-bottom: 5px;
+  }
+  
+  .profile p:last-child {
+    margin-bottom: 0;
+  }
+  
+  img.user-avatar {
+    max-height: 1rem;
+    border-radius: 0.5rem;
+  }

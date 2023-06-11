@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Welcome to {{ block.super }}{% endblock title %}
+
+{% block content %}
+<div class="container">
+<h1>My cars</h1>
+{% if car_list %}
+        <ul>
+            {% for car in car_list %}
+                <li>
+                    <a href="{% url 'car_detail' car.pk %}">{{ car.model }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+{% else %}
+<p class="box box-warning">
+    You have no cars yet, go and make some!
+</p>
+</div>
+{% endif %}
+{% endblock content %}
